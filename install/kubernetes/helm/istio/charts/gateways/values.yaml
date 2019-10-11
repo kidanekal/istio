@@ -23,8 +23,8 @@ istio-ingressgateway:
         cpu: 100m
         memory: 128Mi
       limits:
-        cpu: 2000m
-        memory: 1024Mi
+        cpu: 500m
+        memory: 512Mi
 
   labels:
     app: istio-ingressgateway
@@ -48,7 +48,10 @@ istio-ingressgateway:
   loadBalancerIP: ""
   loadBalancerSourceRanges: []
   externalIPs: []
-  serviceAnnotations: {}
+  serviceAnnotations:
+    service.beta.kubernetes.io/aws-load-balancer-connection-idle-timeout: '300'
+    service.beta.kubernetes.io/aws-load-balancer-internal: "0.0.0.0/0"
+
   podAnnotations: {}
   type: LoadBalancer #change to NodePort, ClusterIP or LoadBalancer if need be
   #externalTrafficPolicy: Local #change to Local to preserve source IP or Cluster for default behaviour or leave commented out
@@ -212,7 +215,7 @@ istio-egressgateway:
     ISTIO_META_ROUTER_MODE: "sni-dnat"
   nodeSelector: {}
   tolerations: []
-  
+
   # Specify the pod anti-affinity that allows you to constrain which nodes
   # your pod is eligible to be scheduled based on labels on pods that are
   # already running on the node rather than based on labels on nodes.

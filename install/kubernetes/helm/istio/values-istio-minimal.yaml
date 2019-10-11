@@ -3,10 +3,10 @@
 #
 pilot:
   enabled: true
-  sidecar: false
+  sidecar: true
 
 gateways:
-  enabled: false
+  enabled: true
 
 security:
   enabled: false
@@ -40,7 +40,5 @@ global:
       enabled: false
       host: # example: statsd-svc.istio-system
       port: # example: 9125
-  
+
   useMCP: false
-
-

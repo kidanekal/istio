@@ -19,8 +19,8 @@ enableProtocolSniffingForInbound: false
 # Resources for a small pilot install
 resources:
   requests:
-    cpu: 500m
-    memory: 2048Mi
+    cpu: 256m
+    memory: 256Mi
 env:
   PILOT_PUSH_THROTTLE: 100
 cpu:
